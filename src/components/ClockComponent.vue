@@ -1,6 +1,5 @@
 <template>
-<div>
-  <h1>{{time}}</h1></div>
+  <h1>{{time}}</h1>
 </template>
 
 <script>

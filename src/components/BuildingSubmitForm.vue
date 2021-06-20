@@ -4,15 +4,9 @@
   <div class="mg3">
     <h1>Naam</h1>
     <input id="namevalue" type="text">
-    <h1>Bankbalance</h1>
-    <input id="bankbalancevalue" value="gold" type="number">
     <h1>Spending</h1>
     <input id="Spendingvalue" value="steel" type="number">
-    <!--
-    <h1>Date</h1>
-    <input id="datevalue" type="text">-->
     <input type="button" value="Submit" @click="SendIt">
-
   </div>
 </div>
 </template>
@@ -46,7 +40,6 @@ export default {
     SendIt(){
       //maakt de array aan met document get element en dan de variabele te gebruiken in de array
       let nameval = document.getElementById('namevalue').value;
-      let bankval = parseInt(document.getElementById('bankbalancevalue').value);
       let spendingval = parseInt(document.getElementById('Spendingvalue').value);
 
       let day = ('0'+d.getDate()).slice(-2);
@@ -58,7 +51,6 @@ export default {
       let ArrayThatsMadeInHere =
         {
           name : nameval,
-          bankbalance: bankval ,
           spending : spendingval ,
           date: dateval
         };
@@ -66,8 +58,11 @@ export default {
       //Object wordt gemaakt met die informatie
       console.log(ArrayThatsMadeInHere);
 
-      if (nameval && bankval && bankval && dateval){
+      if (nameval && spendingval){
         this.$emit('add', ArrayThatsMadeInHere);
+
+        this.$store.commit('transactionAdded', spendingval);
+        console.log(this.$store.state.balance);
       }
     }
   }

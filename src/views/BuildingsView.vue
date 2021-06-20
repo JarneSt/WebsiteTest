@@ -1,6 +1,7 @@
 <template>
 <div>
-  <BuildingItem :buildingobj="buildingobj" />
+  <CurrentBalance :balance="balance"/>
+  <BuildingItem  :buildingobj="buildingobj" />
   <BuildingSubmitForm @add="addBuilding"/>
 </div>
 </template>
@@ -9,13 +10,15 @@
 import BuildingItem from "@/components/BuildingItem";
 import BuildingSection from "@/components/BuildingSection";
 import BuildingSubmitForm from "@/components/BuildingSubmitForm";
+import CurrentBalance from "@/components/CurrentBalance";
 export default {
   name: "BuildingsView",
-  components: {BuildingSubmitForm, BuildingSection, BuildingItem},
+  components: {CurrentBalance, BuildingSubmitForm, BuildingSection, BuildingItem},
   data(){
     return {
       buildingobj :[
-      ]
+      ],
+      balance : this.$store.state.balance
     }
   },
   mounted() {

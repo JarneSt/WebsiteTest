@@ -1,10 +1,9 @@
 <template>
   <div>
     <h2>{{building.name}}</h2>
-    <label>Balance: <b>{{building.bankbalance}}</b></label><br>
-    <label>Spending: <b>{{building.spending}}</b><br>
+    <label>Spending: <b>€ {{building.spending}}</b><br>
       Date: <b>{{building.date}}</b></label><br>
-    <input type="button" value="X" @click="clickeroni">
+    <input type="button" value="X" @click="emitRemove">
   </div>
 </template>
 
@@ -15,8 +14,9 @@ export default {
     building : Object
   },
   methods : {
-    clickeroni(){
+    emitRemove(){
       this.$emit('add', this.building);
+      this.$store.commit('transactionRemoved', this.building.spending);
     }
   },
 }

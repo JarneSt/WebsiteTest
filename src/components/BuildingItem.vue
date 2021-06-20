@@ -10,7 +10,8 @@ export default {
   name: "BuildingItem",
   components: {BuildingSection},
   props : {
-    buildingobj : Object
+    buildingobj : Object,
+    balance : Intl
   },
   methods : {
     removeBuilding(building){
