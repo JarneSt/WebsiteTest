@@ -17,6 +17,7 @@ export default {
     emitRemove(){
       this.$emit('add', this.building);
       this.$store.commit('transactionRemoved', this.building.spending);
+      localStorage.setItem('balance', this.$store.state.balance)
     }
   },
 }

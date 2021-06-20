@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <CurrentBalance :balance="balance" />
+    <CurrentBalance />
     <router-link to="/transactions">Add spendings</router-link>
   </div>
 </template>
@@ -15,10 +15,8 @@ export default {
   components: {
     CurrentBalance,
   },
-  data(){
-    return {
-      balance : this.$store.state.balance
-    }
+  mounted() {
+    this.$store.commit('updateBalance');
   }
 }
 </script>

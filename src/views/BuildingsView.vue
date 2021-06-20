@@ -1,6 +1,6 @@
 <template>
 <div>
-  <CurrentBalance :balance="balance"/>
+  <CurrentBalance />
   <BuildingItem  :buildingobj="buildingobj" />
   <BuildingSubmitForm @add="addBuilding"/>
 </div>
@@ -18,10 +18,11 @@ export default {
     return {
       buildingobj :[
       ],
-      balance : this.$store.state.balance
     }
   },
   mounted() {
+    this.$store.commit('updateBalance');
+
     let transactionArrayLocal = JSON.parse(localStorage.getItem('Transaction'));
     if (transactionArrayLocal){
       for (let i = 0; i < transactionArrayLocal.length; i++)
@@ -36,6 +37,8 @@ export default {
       this.buildingobj.push(building);
       localStorage.setItem('Transaction', JSON.stringify(this.buildingobj));
       this.$store.commit('nextTurn');
+
+      console.log(this.$store.state.balance);
     }
   }
 }

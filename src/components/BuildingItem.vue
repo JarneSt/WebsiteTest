@@ -18,6 +18,8 @@ export default {
       let index = this.buildingobj.indexOf(building);
       this.buildingobj.splice(index, 1);
       localStorage.setItem('Transaction', JSON.stringify(this.buildingobj));
+
+      localStorage.setItem('balance', this.$store.state.balance);
     }
   },
 }

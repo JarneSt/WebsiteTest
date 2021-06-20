@@ -60,9 +60,8 @@ export default {
 
       if (nameval && spendingval){
         this.$emit('add', ArrayThatsMadeInHere);
-
         this.$store.commit('transactionAdded', spendingval);
-        console.log(this.$store.state.balance);
+        localStorage.setItem('balance', this.$store.state.balance)
       }
     }
   }

@@ -9,8 +9,10 @@
 <script>
 export default {
   name: "CurrentBalance",
-  props : {
-    balance : Intl
+  computed : {
+    balance() {
+      return this.$store.state.balance
+    }
   }
 }
 </script>
