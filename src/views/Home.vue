@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/paypal.svg">
     <CurrentBalance />
     <router-link to="/transactions">Add spendings</router-link>
   </div>
@@ -20,3 +20,17 @@ export default {
   }
 }
 </script>
+
+<style>
+* {
+  font-family: 'Poppins', sans-serif;
+}
+</style>
+
+<style scoped>
+
+.home img {
+  width: auto;
+  height: 380px;
+}
+</style>

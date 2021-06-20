@@ -2,7 +2,7 @@
   <input class="VisibleBtn" type="button" value="Hide" @click="MaakVisible">
 <div class="input" >
   <div class="mg3">
-    <h1>Naam</h1>
+    <h1>Name</h1>
     <input id="namevalue" type="text">
     <h1>Spending</h1>
     <input id="Spendingvalue" value="steel" type="number">
@@ -70,11 +70,12 @@ export default {
 
 <style scoped>
 div.input {
+  background: rgb(105, 175, 207) none repeat scroll 0% 0%;
+  border: 6px solid rgb(48, 149, 194);
   visibility: visible;
   margin: 73px auto;
   padding: 20px;
   width: 50%;
-  border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 5px -1px;
 }
