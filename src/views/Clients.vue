@@ -21,9 +21,10 @@
     </tr>
     </tbody>
   </table>
-
+  <LoadingGIFComponent v-if="showLoading"/>
   <ClientsAdd/>
   <ClearClients/>
+
 </div>
 </template>
 
@@ -33,11 +34,13 @@ import ClientsAdd from "../components/Clients/ClientsAdd";
 import AllClientsHeader from "../components/Clients/AllClientsHeader";
 import ClearClients from "../components/Clients/ClearClients";
 import ClientsExport from "../components/Clients/ClientsExport";
+import LoadingGIFComponent from "../components/Clients/LoadingGIFComponent";
 export default {
   name: "Clients",
-  components: {ClientsExport, ClearClients, AllClientsHeader, ClientsAdd, AllClientsPage},
+  components: {LoadingGIFComponent, ClientsExport, ClearClients, AllClientsHeader, ClientsAdd, AllClientsPage},
   methods : {
     csvToObject(){
+      this.$store.state.loadingGifShow = true;
       console.clear();
       /**
        * Clears table so values don't add
@@ -73,28 +76,33 @@ export default {
            */
           this.$store.state.headersArr = lines[0].split(splitValue);
 
+
+
+
           /**
            * Foreach line it reads, it creates an object and pushes this into an array
            * which is passed in a different component
            */
+
+          let countOfValues = 0;
+          console.log('lines length', lines.length);
           for (let i = 1; i < lines.length; i++)
           {
             let currentline = lines[i].split(splitValue);
-            if (!currentline.includes('“')){
-              let obj = {
-                first : currentline[0],
-                second : currentline[1],
-                third : currentline[2],
-                fourth : currentline[3],
-                fifth : currentline[4]
-              };
+            console.log('currentline length',currentline.length);
 
-              this.$store.state.usersArr.push(obj);
-            }
+            let obj = {
+              first: currentline[0],
+              second: currentline[1],
+              third: currentline[2],
+              fourth: currentline[3],
+              fifth: currentline[4]
+            };
+            this.$store.state.usersArr.push(obj);
           }
-
+          this.$store.state.loadingGifShow = false;
           console.log("usersArray",this.$store.state.usersArr);
-        };
+        }
       }catch (e) {
         alert('Error parsing, please remove any comments and make sure the CSV uses either comma or semicolumn to split')
       }
@@ -107,6 +115,9 @@ export default {
     },
     headers(){
       return this.$store.state.headersArr
+    },
+    showLoading(){
+      return this.$store.state.loadingGifShow
     }
   },
   mounted() {

@@ -10,7 +10,7 @@ export default createStore({
     loginBtnClicked : false,
     showLoginBool : false,
     showRegisterBool : false,
-
+    loadingGifShow : false,
 
     /**
      * Error
