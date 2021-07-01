@@ -20,12 +20,11 @@ export default createStore({
     error : '',
 
 
+    /**
+     * Profile
+     */
 
-
-
-
-
-
+    profilePicture : '',
 
 
 

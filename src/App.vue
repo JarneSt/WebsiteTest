@@ -1,12 +1,14 @@
 <template>
   <div id="nav">
-    <router-link class="noHyper" to="/"><h1 id="logo">Usero</h1></router-link>
+    <router-link class="noHyper" to="/"><h1 id="logo">CSVEditor</h1></router-link>
     <div class="NavBtns">
       <router-link v-if="isregistered === true && issignedin === false" to="/login">Login</router-link>
 
       <router-link v-if="issignedin === false && isregistered === false"  to="/register">Register</router-link>
 
-      <router-link v-if="issignedin === true" to="/clients">Clients</router-link>
+      <router-link v-if="issignedin === true" to="/clients">CSV</router-link>
+
+      <router-link v-if="issignedin === true" to="/accountsettings">Account</router-link>
 
       <router-link @click="signOff" to="/" v-if="issignedin === true" >Sign off</router-link>
     </div>
@@ -55,6 +57,26 @@ export default {
 
 <style>
 
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -64,6 +86,7 @@ export default {
 
 .noHyper {
   text-decoration: none;
+  margin: auto;
 }
 
 .dflex {
@@ -95,6 +118,7 @@ export default {
 
 <style scoped>
 
+
 #logo {
   color: crimson;
   justify-content: flex-start;
@@ -119,7 +143,7 @@ export default {
   font-weight: bold;
   background: white;
   padding: 20px;
-  width: 100px;
+  width: 140px;
   text-align: center;
   border-radius: 10px 10px 10px 10px;
   margin-left: 10px;
@@ -130,5 +154,16 @@ export default {
   box-shadow: 0 0 4px 0 crimson;
 }
 
+
+@media only screen and (max-width: 720px){
+  .NavBtns[data-v-7ba5bd90] {
+    width: 31%;
+    flex-wrap: wrap;
+  }
+
+  #nav div a {
+    margin: 3px;
+  }
+}
 
 </style>

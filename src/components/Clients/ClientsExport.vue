@@ -3,7 +3,7 @@
     <p>Choose a splitting value for export</p>
   </div>
   <form>
-    <input type="radio" id="comma" name="fav_split" value="Comma">
+    <input type="radio"  checked id="comma" name="fav_split" value="Comma">
     <label for="comma">Comma</label><br>
     <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
     <label for="semicolumn">Semicolumn</label><br>
@@ -20,6 +20,11 @@ export default {
     saveDynamicDataToFile() {
       let testArr = this.$store.state.usersArr;
       let testHeadersArr = this.$store.state.headersArr;
+      let selectedSplittingValue = ',';
+
+      if (document.getElementById('semicolumn').checked === true){
+        selectedSplittingValue = ';';
+      }
 
 
       let textblock = "";
@@ -30,7 +35,7 @@ export default {
       textblock += `${testHeadersArr[testHeadersArr.length-1]}\n`;
 
 
-      let selectedSplittingValue = ',';
+
 
 
 

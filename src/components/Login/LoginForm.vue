@@ -2,7 +2,7 @@
 <div>
   <h1>Login</h1>
   <div id="lform">
-    <input placeholder="Username" v-model="usern" type="text">
+    <input placeholder="Username" v-model="usern" @keypress="kpHandler" type="text">
     <input placeholder="Password" v-model="psw" @keypress="kpHandler" type="password">
     <p v-if="loginClicked === true">{{ error }}</p>
     <button id="loginclick" v-if="usern && psw"  @click="loginUser">Login</button>
@@ -40,15 +40,8 @@ export default {
   },
   mounted() {
     this.$store.state.loginBtnClicked = false;
-
-    try {
-      let err = location.search.split('req=')[1];
-      err = err.split('?')[0];
-      if (err != null)
-        this.$store.state.error = err;
-    }
-    catch (ex){
-
+    if (this.$store.state.issignedup === false){
+      this.$router.push('/register');
     }
   },
   computed : {

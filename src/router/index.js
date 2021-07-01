@@ -4,6 +4,7 @@ import LoginForm from "../components/Login/LoginForm";
 import RegisterForm from "../components/Register/RegisterForm";
 import Clients from "../views/Clients";
 import ForgotPassword from "../components/Login/ForgotPassword";
+import AccountSettings from "../components/Account/AccountSettings";
 
 const routes = [
   {
@@ -31,6 +32,12 @@ const routes = [
     name: 'forgotpsw',
     component: ForgotPassword
   },
+  {
+    path: '/accountsettings',
+    name: 'accountsettings',
+    component: AccountSettings
+  }
+
 
 ]
 
