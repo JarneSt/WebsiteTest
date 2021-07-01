@@ -76,13 +76,19 @@ export default {
             fourth: fourth4,
             fifth: fifth5
           };
+
+          //TODO: Retrieve last prop in object and add /r to value
+
           this.$store.state.usersArr.push(obj);
+
         }
 
         this.$store.state.countColumns = count;
         for (let i = 0; i < count; i++) {
           document.getElementById(this.headersArray[i]).value = '';
         }
+
+        console.log(this.$store.state.usersArr);
 
     }
   },

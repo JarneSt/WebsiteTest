@@ -125,6 +125,7 @@ export default {
               this.$store.state.usersArr.push(obj);
             }
           }
+
           this.$store.state.loadingGifShow = false;
           console.log("usersArray",this.$store.state.usersArr);
         }

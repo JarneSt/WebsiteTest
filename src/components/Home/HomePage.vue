@@ -1,6 +1,7 @@
 <template>
 <div>
-  <h1>The powerful tool to store clients</h1>
+  <h1>The powerful tool to easily edit CSV files</h1>
+  <i class="fas fa-file-csv"></i>
   <img alt="">
 </div>
 </template>

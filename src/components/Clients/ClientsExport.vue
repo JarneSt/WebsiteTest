@@ -1,5 +1,14 @@
 <template>
-<div id="download-container">
+  <div>
+    <p>Choose a splitting value for export</p>
+  </div>
+  <form>
+    <input type="radio" id="comma" name="fav_split" value="Comma">
+    <label for="comma">Comma</label><br>
+    <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
+    <label for="semicolumn">Semicolumn</label><br>
+  </form>
+  <div id="download-container">
   <a id="exportBtn" href="#" @click="saveDynamicDataToFile">Export as CSV</a>
 </div>
 </template>
@@ -15,40 +24,39 @@ export default {
 
       let textblock = "";
 
-
-      console.log(testHeadersArr);
-      console.log(testHeadersArr.length);
-      console.log(testHeadersArr.length-1);
       for (let i = 0; i < testHeadersArr.length-1; i++) {
-        textblock += `${testHeadersArr[i]},`
+        textblock += `${testHeadersArr[i]}${selectedSplittingValue}`
       }
       textblock += `${testHeadersArr[testHeadersArr.length-1]}\n`;
 
-      console.log(textblock);
 
-      //TODO: Fix comma's
+      let selectedSplittingValue = ',';
+
+
+
+
+
       console.log(testArr);
-      for (let i = 0; i < testArr.length-1; i++)
+      for (let i = 0; i < testArr.length; i++)
       {
         if (testArr[i].first){
-          textblock += `${testArr[i].first},`;
+          textblock += `${testArr[i].first}${selectedSplittingValue}`;
         }
         if (testArr[i].second){
-          textblock += `${testArr[i].second},`;
+          textblock += `${testArr[i].second}${selectedSplittingValue}`;
         }
         if (testArr[i].third){
-          textblock += `${testArr[i].third},`;
+          textblock += `${testArr[i].third}${selectedSplittingValue}`;
         }
         if (testArr[i].fourth){
-          textblock += `${testArr[i].fourth},`;
+          textblock += `${testArr[i].fourth}${selectedSplittingValue}`;
         }
         if (testArr[i].fifth){
           textblock += `${testArr[i].fifth}`;
         }
-
-        //textblock += `${testArr[i].first},${testArr[i].second},${testArr[i].third},${testArr[i].fourth},`;
+        textblock += '\n';
       }
-      //textblock += `${testArr[i].fifth}\n`
+      console.log(textblock);
 
 
       let data = document.getElementById('download-container');
@@ -68,9 +76,6 @@ export default {
           nameGiven = false;
         }
 
-        if (nameGiven === true){
-
-        }
 
         data.appendChild(c);
         alert('Data succesfully exported as "'+name+'.csv"')
@@ -81,8 +86,6 @@ export default {
         c.href = URL.createObjectURL(t);
         c.click();
       }
-
-
     }
   }
 }
@@ -92,5 +95,19 @@ export default {
 #exportBtn {
   text-decoration: underline;
   color: blue;
+}
+
+form {
+  font-size: 18px;
+  margin: 10px;
+}
+
+input {
+  margin: 10px;
+}
+
+p {
+  font-size: 23px;
+  margin: 20px;
 }
 </style>
