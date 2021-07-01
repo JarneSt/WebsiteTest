@@ -156,7 +156,7 @@ export default {
 
 
 @media only screen and (max-width: 720px){
-  .NavBtns[data-v-7ba5bd90] {
+  .NavBtns {
     width: 31%;
     flex-wrap: wrap;
   }
