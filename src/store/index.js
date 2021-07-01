@@ -12,6 +12,8 @@ export default createStore({
     showRegisterBool : false,
     loadingGifShow : false,
 
+    countColumns : '',
+
     /**
      * Error
      */

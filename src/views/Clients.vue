@@ -74,7 +74,7 @@ export default {
           /**
            * Headers that are on the first line
            */
-          this.$store.state.headersArr = lines[0].split(splitValue);
+          this.$store.state.headersArr = lines[0].replace('\r','').split(splitValue);
 
 
 
@@ -84,21 +84,46 @@ export default {
            * which is passed in a different component
            */
 
-          let countOfValues = 0;
           console.log('lines length', lines.length);
           for (let i = 1; i < lines.length; i++)
           {
             let currentline = lines[i].split(splitValue);
             console.log('currentline length',currentline.length);
 
-            let obj = {
-              first: currentline[0],
-              second: currentline[1],
-              third: currentline[2],
-              fourth: currentline[3],
-              fifth: currentline[4]
-            };
-            this.$store.state.usersArr.push(obj);
+            if(currentline.length === 2){
+              let obj = {
+                first: currentline[0],
+                second: currentline[1],
+              };
+              this.$store.state.usersArr.push(obj);
+            }
+            else if (currentline.length === 3){
+              let obj = {
+                first: currentline[0],
+                second: currentline[1],
+                third: currentline[2],
+              };
+              this.$store.state.usersArr.push(obj);
+            }
+            else if (currentline.length === 4){
+              let obj = {
+                first: currentline[0],
+                second: currentline[1],
+                third: currentline[2],
+                fourth: currentline[3],
+              };
+              this.$store.state.usersArr.push(obj);
+            }
+            else if (currentline.length === 5){
+              let obj = {
+                first: currentline[0],
+                second: currentline[1],
+                third: currentline[2],
+                fourth: currentline[3],
+                fifth: currentline[4]
+              };
+              this.$store.state.usersArr.push(obj);
+            }
           }
           this.$store.state.loadingGifShow = false;
           console.log("usersArray",this.$store.state.usersArr);

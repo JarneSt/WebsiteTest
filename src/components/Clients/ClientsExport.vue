@@ -17,12 +17,39 @@ export default {
 
 
       console.log(testHeadersArr);
-      textblock += (`${testHeadersArr[0]},${testHeadersArr[1]},${testHeadersArr[2]},${testHeadersArr[3]},${testHeadersArr[4]}\n`);
-      for (let i = 0; i < testArr.length; i++)
-      {
-        textblock += (`${testArr[i].first},${testArr[i].second},${testArr[i].third},${testArr[i].fourth},${testArr[i].fifth}\n`);
+      console.log(testHeadersArr.length);
+      console.log(testHeadersArr.length-1);
+      for (let i = 0; i < testHeadersArr.length-1; i++) {
+        textblock += `${testHeadersArr[i]},`
       }
+      textblock += `${testHeadersArr[testHeadersArr.length-1]}\n`;
+
       console.log(textblock);
+
+      //TODO: Fix comma's
+      console.log(testArr);
+      for (let i = 0; i < testArr.length-1; i++)
+      {
+        if (testArr[i].first){
+          textblock += `${testArr[i].first},`;
+        }
+        if (testArr[i].second){
+          textblock += `${testArr[i].second},`;
+        }
+        if (testArr[i].third){
+          textblock += `${testArr[i].third},`;
+        }
+        if (testArr[i].fourth){
+          textblock += `${testArr[i].fourth},`;
+        }
+        if (testArr[i].fifth){
+          textblock += `${testArr[i].fifth}`;
+        }
+
+        //textblock += `${testArr[i].first},${testArr[i].second},${testArr[i].third},${testArr[i].fourth},`;
+      }
+      //textblock += `${testArr[i].fifth}\n`
+
 
       let data = document.getElementById('download-container');
       let c = document.createElement("a");
