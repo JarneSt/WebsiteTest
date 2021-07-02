@@ -7,6 +7,12 @@
     <label for="comma">Comma</label><br>
     <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
     <label for="semicolumn">Semicolumn</label><br>
+
+    <input type="radio" id="piping" name="fav_split" value="Piping">
+    <label for="piping">Piping</label><br>
+
+    <input type="radio" id="doublepiping" name="fav_split" value="Doublepiping">
+    <label for="doublepiping">Double piping</label><br>
   </form>
   <div id="download-container">
   <a id="exportBtn" href="#" @click="saveDynamicDataToFile">Export as CSV</a>
@@ -24,6 +30,13 @@ export default {
 
       if (document.getElementById('semicolumn').checked === true){
         selectedSplittingValue = ';';
+      }
+      else if (document.getElementById('piping').checked === true)
+      {
+        selectedSplittingValue = '|';
+      }
+      else if(document.getElementById('doublepiping').checked === true){
+        selectedSplittingValue = '||';
       }
 
 

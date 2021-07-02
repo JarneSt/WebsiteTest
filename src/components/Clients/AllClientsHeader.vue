@@ -3,7 +3,7 @@
     <div class="row gx-5">
       <div class="col">
         <div class="p-2 border bg-light">
-          <h1>All Clients <ClientsExport v-if="users.length > 0"/></h1>
+          <h1>All Records<ClientsExport v-if="users.length > 0"/></h1>
         </div>
       </div>
     </div>
