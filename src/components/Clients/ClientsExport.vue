@@ -106,6 +106,7 @@ export default {
         c.href = URL.createObjectURL(t);
         c.click();
       }
+
     }
   }
 }

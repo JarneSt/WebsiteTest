@@ -2,10 +2,12 @@
 <div>
   <!--Import CSV-->
   <h3>Import CSV here <small><br>(max 5 header values)</small></h3>
-  <div class="mb-3 chooseFileSection">
-    <label for="selectedFile" class="form-label"></label>
-    <input class="form-control" @change="csvToObject" id="selectedFile" accept=".csv" type="file" >
-  </div>
+  <form id="formFile">
+    <div class="mb-3 chooseFileSection">
+      <label for="selectedFile" class="form-label"></label>
+      <input class="form-control" @change="csvToObject" id="selectedFile" accept=".csv" type="file" >
+    </div>
+  </form>
 
   <!--All Clients Title-->
   <AllClientsHeader :users="users" />
@@ -81,6 +83,7 @@ export default {
            */
           let csv = file.target.result;
 
+
           /**
            * The amount of lines in CSV
            */
@@ -109,58 +112,72 @@ export default {
            */
           this.$store.state.headersArr = lines[0].replace('\r','').split(splitValue);
 
+          if(this.$store.state.headersArr.length > 5){
+            alert('We currently only support up to 5 headers');
+          }
+          else {
+            /**
+             * Foreach line it reads, it creates an object and pushes this into an array
+             * which is passed in a different component
+             */
 
+            console.log('lines length', lines.length);
 
-
-          /**
-           * Foreach line it reads, it creates an object and pushes this into an array
-           * which is passed in a different component
-           */
-
-          console.log('lines length', lines.length);
-          for (let i = 1; i < lines.length; i++)
-          {
-            let currentline = lines[i].split(splitValue);
-            console.log('currentline length',currentline.length);
-
-            if(currentline.length === 2){
-              let obj = {
-                first: currentline[0],
-                second: currentline[1],
-              };
-              this.$store.state.usersArr.push(obj);
+            if (lines.length > 1000){
+              alert('You can only have up to 1000 records imported.\nPlease split records into multiple CSV files or choose a different file');
+              document.getElementById('formFile').reset();
             }
-            else if (currentline.length === 3){
-              let obj = {
-                first: currentline[0],
-                second: currentline[1],
-                third: currentline[2],
-              };
-              this.$store.state.usersArr.push(obj);
+            else {
+              for (let i = 1; i < lines.length; i++)
+              {
+                let currentline = lines[i].split(splitValue);
+                console.log('currentline length',currentline.length);
+
+                if(currentline.length === 2){
+                  let obj = {
+                    first: currentline[0],
+                    second: currentline[1],
+                  };
+                  this.$store.state.usersArr.push(obj);
+                }
+                else if (currentline.length === 3){
+                  let obj = {
+                    first: currentline[0],
+                    second: currentline[1],
+                    third: currentline[2],
+                  };
+                  this.$store.state.usersArr.push(obj);
+                }
+                else if (currentline.length === 4){
+                  let obj = {
+                    first: currentline[0],
+                    second: currentline[1],
+                    third: currentline[2],
+                    fourth: currentline[3],
+                  };
+                  this.$store.state.usersArr.push(obj);
+                }
+                else if (currentline.length === 5){
+                  let obj = {
+                    first: currentline[0],
+                    second: currentline[1],
+                    third: currentline[2],
+                    fourth: currentline[3],
+                    fifth: currentline[4]
+                  };
+                  this.$store.state.usersArr.push(obj);
+                }
+              }
+
+
+              console.log("usersArray",this.$store.state.usersArr);
             }
-            else if (currentline.length === 4){
-              let obj = {
-                first: currentline[0],
-                second: currentline[1],
-                third: currentline[2],
-                fourth: currentline[3],
-              };
-              this.$store.state.usersArr.push(obj);
-            }
-            else if (currentline.length === 5){
-              let obj = {
-                first: currentline[0],
-                second: currentline[1],
-                third: currentline[2],
-                fourth: currentline[3],
-                fifth: currentline[4]
-              };
-              this.$store.state.usersArr.push(obj);
-            }
+
+
           }
 
           this.$store.state.loadingGifShow = false;
-          console.log("usersArray",this.$store.state.usersArr);
+
         }
       }catch (e) {
         alert('Error parsing, please remove any comments and make sure the CSV uses either comma or semicolumn to split')
