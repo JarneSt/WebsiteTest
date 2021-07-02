@@ -7,7 +7,7 @@
       <router-link v-if="issignedin === false && isregistered === false"  to="/register">Register</router-link>
 
       <router-link v-if="issignedin === true" to="/clients">CSV</router-link>
-
+      <router-link v-if="issignedin === false" to="/guest">Guest</router-link>
       <router-link v-if="issignedin === true" to="/accountsettings">Account</router-link>
 
       <router-link @click="signOff" to="/" v-if="issignedin === true" >Sign off</router-link>

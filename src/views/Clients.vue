@@ -157,9 +157,12 @@ export default {
     }
   },
   mounted() {
+    /*
     if (this.$store.state.loggedin === false){
       this.$router.push('/login?req=login');
     }
+
+     */
   }
 }
 </script>

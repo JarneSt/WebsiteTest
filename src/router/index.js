@@ -5,6 +5,7 @@ import RegisterForm from "../components/Register/RegisterForm";
 import Clients from "../views/Clients";
 import ForgotPassword from "../components/Login/ForgotPassword";
 import AccountSettings from "../components/Account/AccountSettings";
+import Guest from "../views/Guest";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/accountsettings',
     name: 'accountsettings',
     component: AccountSettings
+  },
+  {
+    path: '/guest',
+    name: 'guest',
+    component: Guest
   }
 
 
