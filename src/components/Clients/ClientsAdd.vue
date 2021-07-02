@@ -120,6 +120,11 @@ export default {
   justify-content: center;
 }
 
+button {
+  padding: 20px;
+  margin: 10px;
+}
+
 .addInputs .mb-3 {
   margin-right: 1em;
 }
