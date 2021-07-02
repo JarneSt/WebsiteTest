@@ -155,14 +155,6 @@ export default {
     showLoading(){
       return this.$store.state.loadingGifShow
     }
-  },
-  mounted() {
-    /*
-    if (this.$store.state.loggedin === false){
-      this.$router.push('/login?req=login');
-    }
-
-     */
   }
 }
 </script>
@@ -171,6 +163,10 @@ export default {
 table {
   margin: auto;
   width: 100%;
+}
+
+td {
+  border-bottom: 1px solid black;
 }
 
 .container {

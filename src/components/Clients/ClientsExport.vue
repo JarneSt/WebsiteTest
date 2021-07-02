@@ -1,22 +1,24 @@
 <template>
-  <div>
-    <p>Choose a splitting value for export</p>
+  <div class="fullContainer">
+    <div>
+      <p>Choose a splitting value for export</p>
+    </div>
+    <form>
+      <input type="radio"  checked id="comma" name="fav_split" value="Comma">
+      <label for="comma">Comma</label><br>
+      <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
+      <label for="semicolumn">Semicolumn</label><br>
+
+      <input type="radio" id="piping" name="fav_split" value="Piping">
+      <label for="piping">Piping</label><br>
+
+      <input type="radio" id="doublepiping" name="fav_split" value="Doublepiping">
+      <label for="doublepiping">Double piping</label><br>
+    </form>
+    <div id="download-container">
+      <a id="exportBtn" href="#" @click="saveDynamicDataToFile">Export as CSV</a>
+    </div>
   </div>
-  <form>
-    <input type="radio"  checked id="comma" name="fav_split" value="Comma">
-    <label for="comma">Comma</label><br>
-    <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
-    <label for="semicolumn">Semicolumn</label><br>
-
-    <input type="radio" id="piping" name="fav_split" value="Piping">
-    <label for="piping">Piping</label><br>
-
-    <input type="radio" id="doublepiping" name="fav_split" value="Doublepiping">
-    <label for="doublepiping">Double piping</label><br>
-  </form>
-  <div id="download-container">
-  <a id="exportBtn" href="#" @click="saveDynamicDataToFile">Export as CSV</a>
-</div>
 </template>
 
 <script>
@@ -46,12 +48,6 @@ export default {
         textblock += `${testHeadersArr[i]}${selectedSplittingValue}`
       }
       textblock += `${testHeadersArr[testHeadersArr.length-1]}\n`;
-
-
-
-
-
-
 
 
       console.log(testArr);
