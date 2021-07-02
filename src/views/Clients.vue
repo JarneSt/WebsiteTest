@@ -70,6 +70,16 @@ export default {
           if (lines[0].includes(',')){
             splitValue = ',';
           }
+          else if (lines[0].includes('||')){
+            splitValue = '||'
+          }
+          else if (lines[0].includes('|')){
+            splitValue = '|'
+          }
+          else if (lines[0].includes('\\0x9')){
+            splitValue = '\\0x9'
+          }
+
 
           /**
            * Headers that are on the first line
