@@ -28,6 +28,10 @@ table {
   border-collapse: collapse;
 }
 
+td {
+  border-bottom: 0.01px solid black;
+}
+
 div h1 {
   padding-top: 50px;
 }

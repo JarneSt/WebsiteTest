@@ -9,7 +9,7 @@ export default {
   name: "ClearClients",
   methods : {
     ClearClientsTable(){
-      this.$store.state.usersArr = [];
+      this.$store.state.headersArr = [];
       this.$store.state.usersArr = [];
     }
   },

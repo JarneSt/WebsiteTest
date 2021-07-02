@@ -1,8 +1,9 @@
 <template>
+
 <div class="addInputs">
-  <div v-if="usersArray.length > 0" v-for="header in headersArray" :key="header">
-    <label>{{header}}</label>
-    <input :id="header">
+  <div class="mb-3"  v-if="usersArray.length > 0" v-for="header in headersArray" :key="header">
+    <label class="form-label">{{ header }}</label>
+    <input class="form-control" :id="header" @keypress="kpHandler">
   </div>
 </div>
   <div v-if="usersArray.length > 0" id="addBtn">
@@ -14,6 +15,10 @@
 export default {
   name: "ClientsAdd",
   methods : {
+    kpHandler(e){
+      if (e.key === 'Enter')
+        this.addObject();
+    },
     addObject(){
       let first1;
       let second2;
@@ -90,6 +95,9 @@ export default {
 
         console.log(this.$store.state.usersArr);
 
+
+      document.getElementById(this.headersArray[0]).focus();
+      window.scrollTo(0,document.body.scrollHeight);
     }
   },
   computed : {

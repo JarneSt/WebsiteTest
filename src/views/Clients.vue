@@ -1,16 +1,17 @@
 <template>
 <div>
   <!--Import CSV-->
-  <div class="mt-5 mb-5">
-    <h3>Import CSV here <small><br>(max 5 header values)</small></h3>
-    <input @change="csvToObject" id="selectedFile" type="file"
-           accept=".csv">
+  <h3>Import CSV here <small><br>(max 5 header values)</small></h3>
+  <div class="mb-3 chooseFileSection">
+    <label for="selectedFile" class="form-label"></label>
+    <input class="form-control" @change="csvToObject" id="selectedFile" accept=".csv" type="file" >
   </div>
 
   <!--All Clients Title-->
   <AllClientsHeader :users="users" />
 
   <!--All Clients Table-->
+  <!--
   <table border="1" v-if="users.length > 0">
     <tbody>
     <th v-if="headers.length > 0" v-for="header in headers">
@@ -21,9 +22,28 @@
     </tr>
     </tbody>
   </table>
+  -->
+
+  <table class="table" v-if="users.length > 0">
+    <thead>
+    <tr>
+      <th v-if="headers.length > 0" v-for="header in headers">
+        {{header}}
+      </th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="usr in users" :key="usr.name">
+      <AllClientsPage :usr="usr"/>
+    </tr>
+    </tbody>
+  </table>
+
+
   <LoadingGIFComponent v-if="showLoading"/>
   <ClientsAdd/>
-  <ClearClients/>
+  <ClearClients v-if="users.length > 0"/>
 
 </div>
 </template>
@@ -160,13 +180,14 @@ export default {
 </script>
 
 <style scoped>
+
+.chooseFileSection {
+  width: 500px;
+  margin: auto;
+}
 table {
   margin: auto;
   width: 100%;
-}
-
-td {
-  border-bottom: 1px solid black;
 }
 
 .container {
@@ -175,5 +196,31 @@ td {
 
 h3 {
   padding-bottom: 20px;
+  padding-top: 25px;
 }
+
+.table {
+  vertical-align: inherit;
+}
+
+
+@media only screen and (max-width: 600px){
+  .chooseFileSection {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 475px){
+  td {
+    padding: 0 !important;
+  }
+  .table > :not(caption) > * > * {
+    padding: 0 !important;
+
+  }
+
+
+
+}
+
 </style>

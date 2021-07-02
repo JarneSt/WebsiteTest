@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-4">
+  <div class="container px-4" v-if="users.length > 0">
     <div class="row gx-5">
       <div class="col">
         <div class="p-2 border bg-light">
