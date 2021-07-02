@@ -11,9 +11,18 @@
       <router-link v-if="issignedin === true" to="/accountsettings">Account</router-link>
 
       <router-link @click="signOff" to="/" v-if="issignedin === true" >Sign off</router-link>
+
+    </div>
+  </div>
+  <div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex text">
+      <div class="toast-body">
+        Supports <br><b>Comma, Semicolumn, Piping, Double Piping</b>
+      </div>
     </div>
   </div>
   <router-view/>
+
 </template>
 
 <script>
@@ -118,6 +127,21 @@ export default {
 
 <style scoped>
 
+.text {
+  font-size: 23px;
+}
+.toast:not(.showing):not(.show) {
+  opacity: inherit;
+}
+
+.toast {
+  width: 100%;
+  background: #e75870;
+}
+
+.toast-body {
+  margin: auto;
+}
 
 #logo {
   color: crimson;
@@ -163,6 +187,10 @@ export default {
 
   #nav div a {
     margin: 3px;
+  }
+
+  .text {
+    font-size: 17px;
   }
 }
 

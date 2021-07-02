@@ -4,16 +4,22 @@
       <p>Choose a splitting value for export</p>
     </div>
     <form>
-      <input type="radio"  checked id="comma" name="fav_split" value="Comma">
-      <label for="comma">Comma</label><br>
-      <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
-      <label for="semicolumn">Semicolumn</label><br>
-
-      <input type="radio" id="piping" name="fav_split" value="Piping">
-      <label for="piping">Piping</label><br>
-
-      <input type="radio" id="doublepiping" name="fav_split" value="Doublepiping">
-      <label for="doublepiping">Double piping</label><br>
+      <div>
+        <input type="radio"  checked id="comma" name="fav_split" value="Comma">
+        <label for="comma">Comma</label><br>
+      </div>
+      <div>
+        <input type="radio" id="semicolumn" name="fav_split" value="Semicolumn">
+        <label for="semicolumn">Semicolumn</label><br>
+      </div>
+      <div>
+        <input type="radio" id="piping" name="fav_split" value="Piping">
+        <label for="piping">Piping</label><br>
+      </div>
+      <div>
+        <input type="radio" id="doublepiping" name="fav_split" value="Doublepiping">
+        <label for="doublepiping">Double piping</label><br>
+      </div>
     </form>
     <div id="download-container">
       <a id="exportBtn" href="#" @click="saveDynamicDataToFile">Export as CSV</a>
@@ -106,9 +112,44 @@ export default {
 </script>
 
 <style scoped>
+* {
+  transition: 0.3s color;
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  width: 19px;
+  height: 18px;
+  border: 1px solid darkgray;
+  border-radius: 50%;
+  outline: none;
+  box-shadow: 0 0 5px 0px gray inset;
+}
+
+input[type='radio']:hover {
+  box-shadow:0 0 5px 0px crimson inset;
+}
+
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:60%;
+  height:60%;
+  margin: 20% auto;
+  border-radius:50%;
+}
+input[type='radio']:checked:before {
+  background:crimson;
+}
+
+
 #exportBtn {
   text-decoration: underline;
-  color: blue;
+  color: crimson;
+}
+
+#exportBtn:hover {
+  color: black;
 }
 
 form {
@@ -116,8 +157,9 @@ form {
   margin: 10px;
 }
 
-input {
-  margin: 10px;
+label {
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 p {

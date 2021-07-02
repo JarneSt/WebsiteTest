@@ -42,8 +42,11 @@
 
 
   <LoadingGIFComponent v-if="showLoading"/>
-  <ClientsAdd/>
-  <ClearClients v-if="users.length > 0"/>
+  <div class="mb-5">
+    <ClientsAdd/>
+    <ClearClients v-if="users.length > 0"/>
+  </div>
+
 
 </div>
 </template>

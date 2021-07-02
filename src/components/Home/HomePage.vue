@@ -25,7 +25,7 @@ a:hover {
 }
 
 div {
-  margin: 10em;
+  margin: 4em;
 }
 
 div h1 {

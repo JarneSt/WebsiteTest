@@ -112,11 +112,16 @@ export default {
 </script>
 
 <style scoped>
+
 .addInputs {
   margin: 4em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.addInputs .mb-3 {
+  margin-right: 1em;
 }
 
  label {
