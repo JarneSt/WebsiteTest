@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import LoginForm from "../components/Login/LoginForm";
+import LoginForm from "../../components/CSVEditor/Login/LoginForm";
 export default {
   name: "Login",
   components: {LoginForm}

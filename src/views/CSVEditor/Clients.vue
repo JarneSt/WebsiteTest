@@ -10,22 +10,9 @@
   </form>
 
   <!--All Clients Title-->
-  <AllClientsHeader :users="users" />
+  <AllClientsHeader :users="users"  />
 
   <!--All Clients Table-->
-  <!--
-  <table border="1" v-if="users.length > 0">
-    <tbody>
-    <th v-if="headers.length > 0" v-for="header in headers">
-      {{header}}
-    </th>
-    <tr v-for="usr in users" :key="usr.name">
-      <AllClientsPage :usr="usr"/>
-    </tr>
-    </tbody>
-  </table>
-  -->
-
   <table class="table" v-if="users.length > 0">
     <thead>
     <tr>
@@ -42,24 +29,24 @@
     </tbody>
   </table>
 
-
+  <!--Loading GIF-->
   <LoadingGIFComponent v-if="showLoading"/>
+
+  <!--Adding and clearing clients-->
   <div class="mb-5">
     <ClientsAdd/>
     <ClearClients v-if="users.length > 0"/>
   </div>
-
-
 </div>
 </template>
 
 <script>
-import AllClientsPage from "../components/Clients/AllClientsPage";
-import ClientsAdd from "../components/Clients/ClientsAdd";
-import AllClientsHeader from "../components/Clients/AllClientsHeader";
-import ClearClients from "../components/Clients/ClearClients";
-import ClientsExport from "../components/Clients/ClientsExport";
-import LoadingGIFComponent from "../components/Clients/LoadingGIFComponent";
+import AllClientsPage from "../../components/CSVEditor/Clients/AllClientsPage";
+import ClientsAdd from "../../components/CSVEditor/Clients/ClientsAdd";
+import AllClientsHeader from "../../components/CSVEditor/Clients/AllClientsHeader";
+import ClearClients from "../../components/CSVEditor/Clients/ClearClients";
+import ClientsExport from "../../components/CSVEditor/Clients/ClientsExport";
+import LoadingGIFComponent from "../../components/CSVEditor/Clients/LoadingGIFComponent";
 export default {
   name: "Clients",
   components: {LoadingGIFComponent, ClientsExport, ClearClients, AllClientsHeader, ClientsAdd, AllClientsPage},
@@ -72,6 +59,9 @@ export default {
        */
       this.$store.state.usersArr = [];
       this.$store.state.headersArr = [];
+      this.$store.state.recordscount = 0;
+
+      let usersArr = this.$store.state.usersArr;
 
       let file = document.getElementById('selectedFile').files[0];
       const reader = new FileReader();
@@ -123,15 +113,11 @@ export default {
 
             console.log('lines length', lines.length);
 
-            if (lines.length > 1000){
-              alert('You can only have up to 1000 records imported.\nPlease split records into multiple CSV files or choose a different file');
-              document.getElementById('formFile').reset();
-            }
-            else {
+            if (lines.length <= 1002){
               for (let i = 1; i < lines.length; i++)
               {
+                this.$store.state.recordscount++;
                 let currentline = lines[i].split(splitValue);
-                console.log('currentline length',currentline.length);
 
                 if(currentline.length === 2){
                   let obj = {
@@ -168,19 +154,60 @@ export default {
                   this.$store.state.usersArr.push(obj);
                 }
               }
-
-
-              console.log("usersArray",this.$store.state.usersArr);
+            }
+            else if (lines.length > 1002){
+              alert('Because of many records, loading will be slower and longer.' +
+                  '\nPlease do NOT change tabs or anything else while records load in');
+              for (let i = 1; i < lines.length; i++)
+              {
+                this.$store.state.recordscount++;
+                let millisecondsToWait = 0;
+                setTimeout(function() {
+                  let currentline = lines[i].split(splitValue);
+                  //console.log('currentline length',currentline.length);
+                  if(currentline.length === 2){
+                    let obj = {
+                      first: currentline[0],
+                      second: currentline[1],
+                    };
+                    usersArr.push(obj);
+                  }
+                  else if (currentline.length === 3){
+                    let obj = {
+                      first: currentline[0],
+                      second: currentline[1],
+                      third: currentline[2],
+                    };
+                    usersArr.push(obj);
+                  }
+                  else if (currentline.length === 4){
+                    let obj = {
+                      first: currentline[0],
+                      second: currentline[1],
+                      third: currentline[2],
+                      fourth: currentline[3],
+                    };
+                    usersArr.push(obj);
+                  }
+                  else if (currentline.length === 5){
+                    let obj = {
+                      first: currentline[0],
+                      second: currentline[1],
+                      third: currentline[2],
+                      fourth: currentline[3],
+                      fifth: currentline[4]
+                    };
+                    usersArr.push(obj);
+                  }
+                }, millisecondsToWait);
+              }
             }
 
-
+            this.$store.state.loadingGifShow = false;
           }
-
-          this.$store.state.loadingGifShow = false;
-
         }
       }catch (e) {
-        alert('Error parsing, please remove any comments and make sure the CSV uses either comma or semicolumn to split')
+        alert('Error parsing, please remove any comments and make sure the CSV uses either comma/semicolumn/piping/double piping to split')
       }
       reader.readAsText(file);
     },

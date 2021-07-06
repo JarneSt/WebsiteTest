@@ -3,6 +3,12 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     /**
+     * CSVEDITOR
+     */
+
+
+
+    /**
      * Login status
      */
     loggedin : false,
@@ -11,9 +17,6 @@ export default createStore({
     showLoginBool : false,
     showRegisterBool : false,
     loadingGifShow : false,
-
-    countColumns : '',
-
     /**
      * Error
      */
@@ -33,6 +36,16 @@ export default createStore({
      */
     headersArr : [],
     usersArr : []
+
+
+
+    //---------------------------------------------------------------------------
+
+    /**
+     * DOGS
+     */
+
+
   },
   mutations: {
   },

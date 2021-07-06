@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import GuestComponent from "../components/Guest/GuestComponent";
+import GuestComponent from "../../components/CSVEditor/Guest/GuestComponent";
 export default {
   name: "Guest",
   components: {GuestComponent}

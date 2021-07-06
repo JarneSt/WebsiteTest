@@ -8,7 +8,7 @@
 // @ is an alias to /src
 
 
-import HomePage from "../components/Home/HomePage";
+import HomePage from "../../components/CSVEditor/Home/HomePage";
 export default {
   name: 'Home',
   components: {

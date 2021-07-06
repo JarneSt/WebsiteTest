@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AccountSettings from "../components/Account/AccountSettings";
+import AccountSettings from "../../components/CSVEditor/Account/AccountSettings";
 export default {
   name: "Account",
   components: {AccountSettings},

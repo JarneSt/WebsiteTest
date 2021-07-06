@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import RegisterForm from "../components/Register/RegisterForm";
+import RegisterForm from "../../components/CSVEditor/Register/RegisterForm";
 export default {
   name: "Register",
   components: {RegisterForm}

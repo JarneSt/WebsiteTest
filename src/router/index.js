@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import LoginForm from "../components/Login/LoginForm";
-import RegisterForm from "../components/Register/RegisterForm";
-import Clients from "../views/Clients";
-import ForgotPassword from "../components/Login/ForgotPassword";
-import AccountSettings from "../components/Account/AccountSettings";
-import Guest from "../views/Guest";
+import Home from '../views/CSVEditor/Home.vue'
+import LoginForm from "../components/CSVEditor/Login/LoginForm";
+import RegisterForm from "../components/CSVEditor/Register/RegisterForm";
+import Clients from "../views/CSVEditor/Clients";
+import ForgotPassword from "../components/CSVEditor/Login/ForgotPassword";
+import AccountSettings from "../components/CSVEditor/Account/AccountSettings";
+import Guest from "../views/CSVEditor/Guest";
 
 const routes = [
   {
