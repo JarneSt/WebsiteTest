@@ -7,15 +7,15 @@
 <div class="container">
   <div class="row row-cols-2">
     <div class="col">
-      <div class="p-3 border bg-light"><h2>Email: <b>{{retrieveLoginInfo.email}}</b></h2>
+      <div class="p-3 border bg-light"><h2>Email: <b>{{LoginInfo.email}}</b></h2>
         <input type="button" @click="changeEmail" value="Change Email"></div>
     </div>
     <div class="col">
-      <div class="p-3 border bg-light"><h2>Username: <b>{{retrieveLoginInfo.username}}</b></h2>
+      <div class="p-3 border bg-light"><h2>Username: <b>{{LoginInfo.username}}</b></h2>
         <input type="button" @click="changeUsername" value="Change Username"></div>
     </div>
     <div class="col">
-      <div class="p-3 border bg-light"><h2>Password: <b>{{retrieveLoginInfo.password}}</b></h2>
+      <div class="p-3 border bg-light"><h2>Password: <b>{{LoginInfo.password}}</b></h2>
         <input type="button" @click="changePassword" value="Change Password"></div>
     </div>
   </div>
@@ -66,7 +66,7 @@ export default {
     }
   },
   computed : {
-    retrieveLoginInfo(){
+    LoginInfo(){
       return JSON.parse(localStorage.getItem('UserInfo'));
     }
   },

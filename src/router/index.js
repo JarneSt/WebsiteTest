@@ -6,6 +6,7 @@ import Clients from "../views/CSVEditor/Clients";
 import ForgotPassword from "../components/CSVEditor/Login/ForgotPassword";
 import AccountSettings from "../components/CSVEditor/Account/AccountSettings";
 import Guest from "../views/CSVEditor/Guest";
+import About from "../views/CSVEditor/About";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/guest',
     name: 'guest',
     component: Guest
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About
   }
 
 

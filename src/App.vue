@@ -2,16 +2,13 @@
   <div id="nav">
     <router-link class="noHyper" to="/"><h1 id="logo">CSVEditor</h1></router-link>
     <div class="NavBtns">
+      <router-link to='/about'>About</router-link>
       <router-link v-if="isregistered === true && issignedin === false" to="/login">Login</router-link>
-
       <router-link v-if="issignedin === false && isregistered === false"  to="/register">Register</router-link>
-
       <router-link v-if="issignedin === true" to="/clients">CSV</router-link>
       <router-link v-if="issignedin === false" to="/guest">Guest</router-link>
       <router-link v-if="issignedin === true" to="/accountsettings">Account</router-link>
-
       <router-link @click="signOff" to="/" v-if="issignedin === true" >Sign off</router-link>
-
     </div>
   </div>
   <div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -22,9 +19,7 @@
     </div>
   </div>
   <router-view/>
-
 </template>
-
 <script>
 // @ is an alias to /src
 
